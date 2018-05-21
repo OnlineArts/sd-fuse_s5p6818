@@ -28,7 +28,7 @@ fi
 # Checking device for fusing
 
 if [ -z $1 ]; then
-	echo "Usage: $0 DEVICE [core-qte|core-qte-arm64|lubuntu]"
+	echo "Usage: $0 DEVICE [core-qte|core-qte-arm64|debian|lubuntu]"
 	exit 0
 fi
 
@@ -79,7 +79,7 @@ fi
 true ${TARGET_OS:=${2,,}}
 
 case ${2,,} in
-core-qte* | lubuntu* | eflasher)
+core-qte* | debian | lubuntu* | eflasher)
 	PARTMAP=./${TARGET_OS}/partmap.txt
 	;;
 *)
@@ -196,7 +196,7 @@ else
 	android)
 		sleep 1
 		${SD_TUNEFS} /dev/${DEV_NAME};;
-	core-qte* | lubuntu*)
+	core-qte* | debian | lubuntu*)
 		sleep 1
 		resize2fs -f /dev/${DEV_PART};;
 	esac
